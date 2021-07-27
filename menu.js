@@ -1,15 +1,17 @@
 class Menu{
   constructor(){
-    this.del = createButton("Delete")
-    this.sav = createButton('Save')
-    this.zoomOut = createButton("Zoom Out")
-    this.zoomIn = createButton("Zoom In")
-    this.shift = createButton("Turbo");
-    this.magLock = createButton("Grid Snap")
-    this.grid = createButton("Grid Overlay");
-    this.clear = createButton("Clear");
-    this.lock = createButton("Lock");
+    this.clear = icons[0]
+    this.grid = icons[1];
+    this.lock = icons[2];
+    this.magLock = icons[3];
+    this.sav = icons[4];
+    this.del = icons[6];
+    this.zoomIn = icons[8];
+    this.zoomOut = icons[9];
+    this.shift = icons[10];
 
+ 
+    
     
     this.sav.mousePressed(sav);
     this.del.mousePressed(del);
