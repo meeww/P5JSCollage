@@ -19,19 +19,19 @@ document.addEventListener('gesturestart', function(e) {
 });
 function preload(){
   grid = loadImage('grid.jpg');
-  icons[0] = createImg('icons/clear.png',"Clear");
-  icons[1] = createImg('icons/grid.png',"Grid");
-  icons[2] = createImg('icons/locked.png',"Lock");
-  icons[3] = createImg('icons/magnet.png',"Magnet");
-  icons[4] = createImg('icons/save.png',"Save");
-  icons[5] = createImg('icons/grid.png',"Grid");
+  icons[0] = createImg('Icons/clear.png',"Clear");
+  icons[1] = createImg('Icons/grid.png',"Grid");
+  icons[2] = createImg('Icons/locked.png',"Lock");
+  icons[3] = createImg('Icons/magnet.png',"Magnet");
+  icons[4] = createImg('Icons/save.png',"Save");
+  icons[5] = createImg('Icons/grid.png',"Grid");
   icons[5].hide();
-  icons[6] = createImg('icons/trash.png',"Trash");
-  icons[7] = createImg('icons/unlocked.png',"Unlocked");
+  icons[6] = createImg('Icons/trash.png',"Trash");
+  icons[7] = createImg('Icons/unlocked.png',"Unlocked");
   icons[7].hide();
-  icons[8] = createImg('icons/zoomIn.png',"Zoom In");
-  icons[9] = createImg('icons/zoomOut.png',"Zoom Out");
-  icons[10] = createImg('icons/turbo.png',"Turbo");
+  icons[8] = createImg('Icons/zoomIn.png',"Zoom In");
+  icons[9] = createImg('Icons/zoomOut.png',"Zoom Out");
+  icons[10] = createImg('Icons/turbo.png',"Turbo");
 
   
 }
@@ -284,14 +284,7 @@ function released(mx,my){
 
 
 function mouseDragged(){ //drag image if an image is selected
-  if(touches.length==2){ //scale proportionally
-    let sh = touches[0].y-touches[1].y;
-    sh*=2;
-    let s = img[selected].sy/sh;
-    img[selected].sy = sh;
-    img[selected].sx = img[selected].sx/s;
-  }
-  if(touches.length==3){ //scale unproportionally
+  if(touches.length==2){ //scale unproportionally
     let sw = touches[0].x-touches[2].x;
     let sh = touches[0].y-touches[2].y;
     img[selected].sx = sw;
