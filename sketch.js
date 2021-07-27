@@ -217,7 +217,10 @@ function mousePressed(){
 
 
   pressed(mouseX,mouseY)
-  pressed(touches[0].x,touches[0].y);
+  if(touches.length>0){
+    pressed(touches[0].x,touches[0].y);
+  }
+  
   
 }
 function touchStarted() {
