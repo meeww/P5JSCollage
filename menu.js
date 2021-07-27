@@ -31,11 +31,14 @@ class Menu{
     this.shift.attribute("title", "Shortcut - SHIFT\nIncreases speed of all movement")
     this.magLock.attribute("title", "Shortcut - SPACE\nSnaps movement to the grid");
     this.grid.attribute("title", "Shortcut - G\nToggles the grid visibility");
-    this.clear.attribute("title", "Shortcut - C\nToggles clear on new frames")
+    this.clear.attribute("title", "Clear: Shortcut - C\nToggles clear on new frames")
     this.lock.attribute("title", "Shortcut - L\nLocks/Unlocks canvas")
     
     this.del.style('background-color',"#ff5c33")
     this.clear.style('background-color',"#4d9900")
+    this.grid.style('background-color',"#000000")
+    this.lock.style('background-color',"#000000")
+    this.magLock.style('background-color',"#000000")
   }
 
 }

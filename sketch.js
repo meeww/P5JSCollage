@@ -21,7 +21,7 @@ function preload(){
   grid = loadImage('grid.png');
   icons[0] = createImg('icons/clear.png',"Clear");
   icons[1] = createImg('icons/grid.png',"Grid");
-  icons[2] = createImg('icons/locked.png',"Lock");
+  icons[2] = createImg('icons/lock.png',"Lock");
   icons[3] = createImg('icons/magnet.png',"Magnet");
   icons[4] = createImg('icons/save.png',"Save");
   icons[5] = createImg('icons/grid.png',"Grid");
@@ -36,15 +36,17 @@ function preload(){
   
 }
 function windowResized() {
-   c = createCanvas(windowWidth,windowHeight-(windowWidth/11));
+   c = createCanvas(windowWidth,windowHeight-(windowHeight/9));
   getFileLoader();
 }
 function setup(){
   
-  c = createCanvas(windowWidth,windowHeight-(windowWidth/11));
-  c.position(0,(windowWidth/11));
-  input = createFileInput(handleFile);
+  c = createCanvas(windowWidth,windowHeight-(windowHeight/9));
 
+  inputb = createFileInput(handleFile);
+  inputb.attribute("id","upload");
+  inputb.hide();
+  
   menu = new Menu();
   getFileLoader(); //startup menu
   c.drop(gotFile);
