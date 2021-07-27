@@ -18,7 +18,7 @@ document.addEventListener('gesturestart', function(e) {
   e.preventDefault();
 });
 function preload(){
-  grid = loadImage('grid.jpg');
+  grid = loadImage('grid.png');
   icons[0] = createImg('icons/clear.png',"Clear");
   icons[1] = createImg('icons/grid.png',"Grid");
   icons[2] = createImg('icons/locked.png',"Lock");
@@ -203,11 +203,16 @@ class imageBox{
     }
   }
   update(){
-    
     controller(); //user input control function
+    if(this.sx<0){
+      this.sx=-this.sx;
+    }
+    if(this.sy<0){
+      this.sy=-this.sy;
+    }
   }
   display(){
-    if(this.img.width!=null&this.preloaded==false){
+    if(this.img.width>1&this.preloaded==false){
       this.preloaded=true;
       this.load();
     }
@@ -302,6 +307,16 @@ function mouseDragged(){ //drag image if an image is selected
     let s = img[selected].sy/sh;
     img[selected].sy = sh;
     img[selected].sx = img[selected].sx/s;
+    
+  }
+  if(touches.length==3){ //scale proportionally
+    let sh = touches[2].y-touches[1].y;
+    let sw = touches[2].x-touches[1].x
+    sh*=2;
+    sw*=2;
+    
+    img[selected].sy = sh;
+    img[selected].sx = sw;
     
   }
   
