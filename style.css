@@ -1,0 +1,24 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width:100%;
+}
+menu{
+margin: 0;
+padding: 0;
+width:100%;
+}
+canvas {
+  display: block;
+}
+button {
+  border:none;
+  height:40px;
+  color:white;
+  background-color: #333333;
+  cursor: pointer;
+  float:left;
+  text-decoration:none;
+  width:11.1111111vw;
+
+}
