@@ -18,12 +18,12 @@ function preload(){
   grid = loadImage('grid.jpg');
 }
 function windowResized() {
-   c = createCanvas(windowWidth,windowHeight-(windowHeight/10));
+   c = createCanvas(windowWidth,windowHeight-(windowHeight/20));
   getFileLoader();
 }
 function setup(){
   
-  c = createCanvas(windowWidth,windowHeight-(windowHeight/10));
+  c = createCanvas(windowWidth,windowHeight-(windowHeight/20));
   c.position(0,(windowHeight/10));
   input = createFileInput(handleFile);
   menu = new Menu();
