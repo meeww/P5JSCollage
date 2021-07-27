@@ -36,12 +36,12 @@ function preload(){
   
 }
 function windowResized() {
-   c = createCanvas(windowWidth,windowHeight-(windowHeight/7));
+   c = createCanvas(windowWidth,windowHeight-(windowHeight/4.75));
   getFileLoader();
 }
 function setup(){
   
-  c = createCanvas(windowWidth,windowHeight-(windowHeight/7));
+  c = createCanvas(windowWidth,windowHeight-(windowHeight/4.75));
 
   inputb = createFileInput(handleFile);
   inputb.attribute("id","upload");
