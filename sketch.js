@@ -13,19 +13,22 @@ let cT=true; // clear toggle lock
 let lock=false; // mouse input lock
 let menu;
 let c;
-
+document.addEventListener('gesturestart', function(e) {
+  e.preventDefault();
+});
 function preload(){
   grid = loadImage('grid.jpg');
 }
 function windowResized() {
-   c = createCanvas(windowWidth,windowHeight-(windowHeight/20));
+   c = createCanvas(windowWidth,windowHeight-(windowHeight/10));
   getFileLoader();
 }
 function setup(){
   
-  c = createCanvas(windowWidth,windowHeight-(windowHeight/20));
+  c = createCanvas(windowWidth,windowHeight-(windowHeight/10));
   c.position(0,(windowHeight/10));
   input = createFileInput(handleFile);
+
   menu = new Menu();
   getFileLoader(); //startup menu
   c.drop(gotFile);
@@ -195,12 +198,19 @@ class imageBox{
   }
 }
 function mousePressed(){
+  pressed(mouseX,mouseY)
+}
+function touchStarted() {
+  pressed(0,0)
+}
+
+function pressed(mx,my){
   if(lock==false){
-    imouse= createVector(mouseX,mouseY)
+    imouse= createVector(mx,my)
   if(dragging==false){ //check if dragging is false to make sure you dont deselect
     let anySelect =false; //setup no selection variable
   for(let i = 0; i < imgNum;i++){ //check if mouse is within boxes radius
-      let m = createVector(mouseX,mouseY);
+      let m = createVector(mx,my);
       let l = (img[i].loc);
       let s = createVector(img[i].sx,img[i].sy)
       if(m.x>l.x-s.x/2&m.x<l.x+s.x/2&m.y>l.y-s.y/2&m.y<l.y+s.y/2){
@@ -211,7 +221,7 @@ function mousePressed(){
       
     }
     if(anySelect==false){ //if nothing has been selected, set selection to null
-      if(mouseX>0&mouseX<width&mouseY>0&mouseY<height){
+      if(mx>0&mx<width&my>0&my<height){
       selected=null;
       }
       
@@ -219,24 +229,36 @@ function mousePressed(){
   }
   }
 }
+
+
 function mouseReleased(){//stop dragging
-  if(mouseX>0&mouseX<width&mouseY>0&mouseY<height){
+  released(mouseX,mouseY);
+}
+function released(mx,my){
+  if(mx>0&mx<width&my>0&my<height){
   dragging=false;
   }
 }
+
+
 function mouseDragged(){ //drag image if an image is selected
+  dragged(mouseX,mouseY,pmouseX,pmouseY);
+}
+
+function dragged(mx,my,px,py){
   if(lock==false){
     
-    let pM=createVector(pmouseX-imouse.x,pmouseY-imouse.y)
+    let pM=createVector(px-imouse.x,py-imouse.y)
     if(pM.mag()>5){//prevent accidental dragging by setting a drag deadzone
   dragging=true; //set dragging boolean to true
   if(selected!=null){
-    img[selected].loc = createVector(mouseX,mouseY)
+    img[selected].loc = createVector(mx,my)
     
   }
   }
   }
 }
+
 function controller(){ //input controlls
   keyCounter++; //if timer has surpassed 15 switch to keyisdown instead of keyreleased
   if(keyCounter>15){
