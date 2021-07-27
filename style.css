@@ -19,15 +19,19 @@ canvas {
 }
 
 input{
+  overflow:hidden;
+  position:absolute;
   float:left;
-  width:9.4vw;
+  width:9vw;
   height:9vw;
+  content-visibility:hidden;
   text-decoration:none;
   background-color: #333333;
    -webkit-user-select: none;
 
 }
 input[type=file]::file-selector-button{
+  
   border: 1px solid #222222;
   border-radius: .2em;
   height:9vw;
@@ -35,7 +39,7 @@ input[type=file]::file-selector-button{
   background-color: #333333;
   cursor: pointer;
   text-decoration:none;
-  width:9.4vw;
+  width:9vw;
   -webkit-user-select: none;
 
 
@@ -50,7 +54,7 @@ button,img{
   cursor: pointer;
   float:left;
   text-decoration:none;
-  width:9.4vw;
+  width:9vw;
   -webkit-user-select: none;
   font-size:1.5em;
   text-align:LEFT;
