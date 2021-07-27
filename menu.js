@@ -9,6 +9,7 @@ class Menu{
     this.grid = createButton("Grid Overlay");
     this.clear = createButton("Clear");
     this.lock = createButton("Lock");
+
     
     this.sav.mousePressed(sav);
     this.del.mousePressed(del);
@@ -19,6 +20,7 @@ class Menu{
     this.grid.mousePressed(gridOverlay);
     this.clear.mousePressed(clearTogg);
     this.lock.mousePressed(lockTogg);
+
     
     this.del.attribute("title", "Shortcut - DEL\nDeletes currently selected object");
     this.sav.attribute("title", "Shortcut - CTRL-S\nSaves canvas as a jpeg");
