@@ -153,12 +153,8 @@ function gotFile(file) { //image file has been dropped onto the canvas
 class imageBox{
   constructor(i){
     this.img= 0;//initliaze img
-    if(mouseX==0||mouseY==0){
-      this.loc = createVector(width/2,height/2);
-    }
-    else{
-      this.loc = createVector(mouseX,mouseY); //image location
-    }
+    this.loc = createVector(width/2,height/2);
+
     this.index = i; //image array index
     this.sx=1 //image width scale
     this.sy=1 //image height scale
