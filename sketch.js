@@ -285,8 +285,8 @@ function released(mx,my){
 
 function mouseDragged(){ //drag image if an image is selected
   if(touches.length==2){ //scale unproportionally
-    let sw = touches[0].x-touches[2].x;
-    let sh = touches[0].y-touches[2].y;
+    let sw = touches[0].x-touches[1].x;
+    let sh = touches[0].y-touches[1].y;
     img[selected].sx = sw;
     img[selected].sy = sh;
   }
