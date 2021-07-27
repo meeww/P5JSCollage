@@ -3,18 +3,27 @@ html, body {
   padding: 0;
   width:100%;
   overflow:hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
+
 menu{
 margin: 0;
 padding: 0;
 width:100%;
+  overflow: hidden;
 }
 canvas {
   display: block;
 }
-input {
-    width:10vw;
-    overflow:hidden;
+
+input{
+  float:left;
+  width:10vw;
+  height:10vh;
+  text-decoration:none;
+  background-color: #333333;
+   -webkit-user-select: none;
 }
 input[type=file]::file-selector-button{
   border: 1px solid #222222;
