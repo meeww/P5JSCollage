@@ -153,8 +153,7 @@ function gotFile(file) { //image file has been dropped onto the canvas
 class imageBox{
   constructor(i){
     this.img= 0;//initliaze img
-    this.loc = createVector(width/2,height/2);
-
+    this.loc = createVector(width/2,height/2); //image location
     this.index = i; //image array index
     this.sx=1 //image width scale
     this.sy=1 //image height scale
@@ -163,8 +162,14 @@ class imageBox{
 
   }
   load(){
+    if(this.img.width<width){
     this.sx = width/3;//update w/h since dropped images arent preloaded
     this.sy = this.img.height/(this.img.width/this.sx);
+    }
+    else{
+      this.sx = this.img.width/3;
+      this.sy = this.img.height/3;
+    }
   }
   update(){
     
