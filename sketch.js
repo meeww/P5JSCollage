@@ -20,13 +20,13 @@ function preload(){
   grid = loadImage('grid.jpg');
 }
 function windowResized() {
-   c = createCanvas(windowWidth,windowHeight-(windowHeight/10));
+   c = createCanvas(windowWidth,windowHeight-(windowWidth/10));
   getFileLoader();
 }
 function setup(){
   
-  c = createCanvas(windowWidth,windowHeight-(windowHeight/10));
-  c.position(0,(windowHeight/10));
+  c = createCanvas(windowWidth,windowHeight-(windowWidth/10));
+  c.position(0,(windowWidth/10));
   input = createFileInput(handleFile);
 
   menu = new Menu();
@@ -122,6 +122,16 @@ function draw(){
       img[i].display();
     }
   }
+
+    fill(255,0,0);
+    for (var i = 0; i < touches.length; i++) {
+      if(i<2){
+        ellipse(touches[i].x, touches[i].y, 3, 3);
+      }
+      
+  }
+  
+  
 }
 function gridDraw(){
   imageMode(CORNER);
@@ -204,10 +214,14 @@ class imageBox{
   }
 }
 function mousePressed(){
+
+
   pressed(mouseX,mouseY)
+  pressed(touches[0].x,touches[0].y);
+  
 }
 function touchStarted() {
-  pressed(0,0)
+  pressed(touches[0].x,touches[0].y);
 }
 
 function pressed(mx,my){
@@ -239,6 +253,9 @@ function pressed(mx,my){
 
 function mouseReleased(){//stop dragging
   released(mouseX,mouseY);
+  if(touches.length>0){
+    dragging=false;
+  }
 }
 function released(mx,my){
   if(mx>0&mx<width&my>0&my<height){
@@ -248,7 +265,23 @@ function released(mx,my){
 
 
 function mouseDragged(){ //drag image if an image is selected
-  dragged(mouseX,mouseY,pmouseX,pmouseY);
+  if(touches.length==2){ //scale proportionally
+    let sh = touches[0].y-touches[1].y;
+    sh*=2;
+    let s = img[selected].sy/sh;
+    img[selected].sy = sh;
+    img[selected].sx = img[selected].sx/s;
+  }
+  if(touches.length==3){ //scale unproportionally
+    let sw = touches[0].x-touches[2].x;
+    let sh = touches[0].y-touches[2].y;
+    img[selected].sx = sw;
+    img[selected].sy = sh;
+  }
+  else{
+    dragged(mouseX,mouseY,pmouseX,pmouseY);
+  }
+  
 }
 
 function dragged(mx,my,px,py){
