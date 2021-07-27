@@ -151,7 +151,12 @@ function draw(){
 }
 function gridDraw(){
   imageMode(CORNER);
-  image(grid,0,0,width,width)
+  if(width>height){
+    image(grid,0,0,width,width)
+  }
+  else{
+    image(grid,0,0,height,height)
+  }
 }
 function handleFile(file) {
   if (file.type === 'image') {
@@ -269,13 +274,20 @@ function pressed(mx,my){
   }
 }
 
-
-function mouseReleased(){//stop dragging
-  released(mouseX,mouseY);
-  if(touches.length>0){
-    dragging=false;
+function touchStopped(){
+  if(touches.length==0){
+  dragging=false;
   }
 }
+function mouseReleased(){//stop dragging
+  if(mouseX>0){
+  released(mouseX,mouseY);
+  }
+  else{
+    released(touches[0].x,touches[0].y)
+  }
+}
+
 function released(mx,my){
   if(mx>0&mx<width&my>0&my<height){
   dragging=false;
@@ -284,15 +296,17 @@ function released(mx,my){
 
 
 function mouseDragged(){ //drag image if an image is selected
-  if(touches.length==2){ //scale unproportionally
-    let sw = touches[0].x-touches[1].x;
-    let sh = touches[0].y-touches[1].y;
-    img[selected].sx = sw;
+  if(touches.length==2){ //scale proportionally
+    let sh = touches[1].y-touches[0].y;
+    sh*=2;
+    let s = img[selected].sy/sh;
     img[selected].sy = sh;
+    img[selected].sx = img[selected].sx/s;
+    
   }
-  else{
+  
     dragged(mouseX,mouseY,pmouseX,pmouseY);
-  }
+  
   
 }
 
